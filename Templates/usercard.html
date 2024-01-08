@@ -1,0 +1,22 @@
+{% extends "nav2.html" %}
+{% block content %}
+    <center>
+        <div class="card" style=
+                "border:1px solid #ddd;
+                padding: 10px;
+                margin: 10px;
+                width: 300px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: 0.3s;
+                display: inline-block;color:black; ">
+            <h1>{{ user.username }}</h1>
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Address: {{ member.address }}</p>
+            <p>Age: {{ member.age }}</p>
+            <p>Contact Number: {{ member.number }}</p>
+            <p>Image: {% if member.image %}<img src="{{ member.image.url }}" alt="User Image" style="max-height: 50px;">{% else %}No Image{% endif %}</p>
+        </div>
+    </center>
+{% endblock %}

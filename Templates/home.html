@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body{
+            background-image:url('https://img.freepik.com/free-vector/blue-curve-background_53876-113112.jpg');
+            background-repeate:no-repeate;
+            background-size:cover;
+        }
+        form{
+            background:transparent;
+        }
+    </style>
+
+</head>
+<body >
+    <img src="https://png.pngtree.com/png-vector/20230303/ourmid/pngtree-education-and-college-logo-design-template-vector-png-image_6627789.png" class="img-thumbnail rounded mx-auto d-block" alt="..."style='width:150px;heght:150px;'>
+    <div class="container mx-auto d-block ">
+        <div class="col-md-6 mx-auto">
+            <p class='h1 text-center mb-4'>Login</p>
+            <form action="{% url 'login1' %}" method='post'>
+                {% csrf_token %}
+                {% for message in messages %}
+                <div class="alert alert-danger text-center" role="alert">{{message}}</div>
+                {% endfor %}
+                <div class="form-group row">
+                    <label for="exampleInputText" class="col-md-4 col-form-label text-right">Username</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control"name='username' id="exampleInputText" placeholder="Enter Username">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword1" class="col-md-4 col-form-label text-right">Password</label>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control"name='password' id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <p class="h6 col-md-12 text-center mt-2">Don't have an account? <a href="{% url 'signup' %}">Signup</a> here.</small>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

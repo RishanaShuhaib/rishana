@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">Student Details</h1>
+            <table class="table"style="color:white;border:2px">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Joining Date</th>
+                        <th>Course</th>
+                        <th>Course Fee</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for student in student %}
+                        <tr>
+                            <td>{{ student.student_name }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.student_age }}</td>
+                            <td>{{ student.joining_date|date:'Y-m-d' }}</td>
+                            <td>{{ student.course.course_name }}</td>
+                            <td>{{ student.course.fee }}</td>
+                            <td>
+                                <a style="color:white"href="{% url 'editpage' student.id %}" class="btn  btn-sm">Edit</a>
+                                <a style="color:white"href="{% url 'deletestd' student.id %}" class="btn  btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container" >
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center">Teacher Details</h1>
+                <table class="table" style="color:white;border:2px">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Age</th>
+                            <th>Contact Number</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in member %}
+                            <tr>
+                                <td>{{ teacher.user.first_name }}</td>
+                                <td>{{ teacher.user.last_name }}</td>
+                                <td>{{ teacher.user.username }}</td>
+                                <td>{{ teacher.user.email }}</td>
+                                <td>{{ teacher.address }}</td>  
+                                <td>{{ teacher.age }}</td>
+                                <td>{{ teacher.number }}</td>
+                                <td>
+                                    {% if teacher.image %}
+                                        <img src="{{ teacher.image.url }}" alt="Teacher Image" style="max-height: 50px;">
+                                    {% else %}
+                                        No Image
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a style="color: white" href="{% url 'deletetcr' teacher.user.id %}" class="btn btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

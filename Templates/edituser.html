@@ -1,0 +1,71 @@
+
+  {% extends "nav2.html" %}
+  {% block content %}
+  <h2 style="text-align: center;">Edit User</h2>
+
+  <form style="max-width: 400px;
+  margin: auto;" method="post" enctype="multipart/form-data" action="{% url 'edituser' user.id %}">
+    {% csrf_token %}
+    {% for message in messages %}
+    <div class="alert alert-danger text-center" role="alert">{{message}}</div>
+    {% endfor %}
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; " for="firstname">First Name:</label>
+    <input style="width: calc(100% - 10px);
+    margin-bottom: 10px;"type="text" name="first_name" value="{{ user.first_name }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="lastname">Last Name:</label>
+    <input  style="width: calc(100% - 10px);
+    margin-bottom: 10px;"type="text" name="last_name" value="{{ user.last_name }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="username">Username:</label>
+    <input  style="width: calc(100% - 10px);
+    margin-bottom: 10px;" type="text" name="username" value="{{ user.username }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="email">Email:</label>
+    <input type="email" name="email" value="{{ user.email }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="address">Address:</label>
+    <input  style="width: calc(100% - 10px);
+    margin-bottom: 10px;"type="text" name="address" value="{{ member.address }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="age">Age:</label>
+    <input style="width: calc(100% - 10px);
+    margin-bottom: 10px;" type="number" name="age" value="{{ member.age }}" required>
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="age">Number:</label>
+    <input  style="width: calc(100% - 10px);
+    margin-bottom: 10px;"type="number" name="number" value="{{ member.number }}" required>
+    
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; "for="photo">Photo:</label>
+    <input  style="width: calc(100% - 10px);
+    margin-bottom: 10px;"type="file" name="image" accept="image/*" >
+
+    <label style="display: inline-block;
+    width: 120px;
+    margin-bottom: 5px; " for="sel">Select Course:</label>
+    <select  style="width: calc(100% - 10px);
+    margin-bottom: 10px;" name="sel">
+      {% for course in courses %}
+        <option value="{{ course.id }}" {% if course.id == user.course.id %}selected{% endif %}>{{ course.course_name }}</option>
+      {% endfor %}
+    </select>
+
+    <button style="margin-left:150px;"type="submit">Update</button>
+  </form>
+{% endblock %}
